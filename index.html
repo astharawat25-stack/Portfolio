@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Astha | Full-Stack and GenAI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1a0b36; --bg2:#2b1260; --surface:#26134f; --ink:#ffffff; --muted:#c9b8ea; --line:#4a2c86;
+  --brand:#7a2fd0; --brand2:#a45cff; --soft:#dcc9f0; --on-brand:#ffffff; --chip:#3a1c75;
+  --display:"Poppins","Segoe UI",Arial,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#f4eeff; --bg2:#e6d8ff; --surface:#ffffff; --ink:#24104a; --muted:#5d4a86; --line:#d3bff3;
+  --brand:#6d22c8; --brand2:#8b45e6; --soft:#4a2290; --on-brand:#ffffff; --chip:#eadcff; color-scheme:light;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(96px + env(safe-area-inset-top,0px));height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;overflow-x:hidden;color:var(--ink);font:400 17px/1.65 var(--display);
+  background:radial-gradient(1200px 600px at 80% -10%,var(--bg2),transparent 60%),var(--bg);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:9}
+a{color:var(--brand2);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--brand2);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));z-index:10}
+
+header.top{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:8;padding:0 16px}
+.bar{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:linear-gradient(90deg,var(--brand),var(--brand2));color:var(--on-brand);border-radius:16px;padding:12px 22px;box-shadow:0 14px 34px -16px var(--brand)}
+.logo{font-weight:800;font-size:24px;color:#fff;text-decoration:none;letter-spacing:-.02em}
+.logo i{font-weight:600;font-family:var(--display);opacity:.85}
+nav{display:flex;align-items:center;gap:22px}
+nav a.l{color:#fff;text-decoration:none;font-weight:600;font-size:15px;position:relative;white-space:nowrap}
+nav a.l::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav a.l:hover::after{transform:scaleX(1)}
+.hire{background:#fff;color:#3b1a78;font-weight:700;font-size:14px;padding:8px 16px;border-radius:10px;text-decoration:none;white-space:nowrap}
+.theme{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:999px;padding:5px 12px;font:600 13px var(--display);cursor:pointer}
+@media (max-width:860px){nav a.l{display:none}}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:64px 0 40px}
+.hello{font-size:clamp(20px,2.4vw,26px);font-weight:700;margin:0 0 4px}
+.hero h1{font-weight:800;font-size:clamp(46px,8vw,92px);line-height:1;letter-spacing:-.04em;margin:0 0 14px}
+.hero h1 .ch{display:inline-block;opacity:0;transform:translateY(60%) rotate(6deg);animation:pop .75s cubic-bezier(.2,.9,.3,1.2) forwards;animation-delay:calc(var(--i)*80ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+.role{font-weight:600;font-size:clamp(20px,3vw,30px);color:var(--soft);margin:0 0 14px;min-height:1.4em}
+.caret{display:inline-block;width:3px;height:1em;background:var(--brand2);margin-left:3px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sub{color:var(--muted);max-width:50ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:700;text-decoration:none;border:2px solid var(--brand2);transition:transform .2s,background .2s,color .2s}
+.btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));border-color:transparent;color:#fff}
+.btn.ghost{color:var(--ink)}
+.btn.ghost:hover{background:var(--brand2);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.social{display:flex;gap:12px}
+.social a{width:42px;height:42px;border-radius:50%;background:var(--chip);color:var(--soft);display:grid;place-items:center;font-weight:800;font-size:15px;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+.social a:hover{background:var(--brand2);color:#fff;transform:translateY(-3px)}
+.social svg{width:20px;height:20px;fill:currentColor}
+
+.art{position:relative;max-width:460px;margin-left:auto;width:100%}
+.art::before{content:"";position:absolute;inset:8% 4% 4%;border-radius:50%;background:radial-gradient(circle,var(--brand2),transparent 68%);opacity:.5;filter:blur(30px);animation:float 9s ease-in-out infinite}
+.art svg{position:relative;width:100%;height:auto;display:block;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.fl{position:absolute;background:#fff;color:#3b1a78;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;box-shadow:0 10px 24px -10px #000;animation:float 6s ease-in-out infinite}
+.fl.a{top:6%;left:-4%;animation-delay:-1s}.fl.b{top:46%;right:-3%;animation-delay:-3s}.fl.c{bottom:6%;left:6%;animation-delay:-2s}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}.art{margin:0 auto}.fl.a{left:2%}.fl.b{right:2%}}
+
+.stats{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 26px;margin-bottom:24px}
+.stat{display:flex;align-items:center;gap:10px}
+.stat b{font-size:clamp(34px,5vw,48px);font-weight:800;line-height:1;letter-spacing:-.04em}
+.stat span{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;line-height:1.2;max-width:12ch}
+.tech{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.tech span{font:600 13px var(--mono);background:var(--chip);color:var(--soft);padding:6px 11px;border-radius:8px;transition:background .2s,color .2s,transform .2s}
+.tech span:hover{background:var(--brand2);color:#fff;transform:translateY(-3px)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.03em;margin:0 0 28px}
+.cols{display:grid;grid-template-columns:200px 1fr;gap:32px}
+.cols>h2{margin:0}
+@media (max-width:760px){.cols{grid-template-columns:1fr;gap:8px}}
+.about p{margin:0 0 16px;max-width:64ch;color:var(--muted)}
+.skills dl{margin:0;display:grid;grid-template-columns:150px 1fr;gap:16px 24px}
+.skills dt{font-weight:700}
+.skills dd{margin:0;display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:560px){.skills dl{grid-template-columns:1fr;gap:6px}.skills dd{margin-bottom:12px}}
+.chip{background:var(--chip);color:var(--soft);padding:4px 13px;border-radius:999px;font-size:15px;font-weight:500;transition:background .2s,color .2s,transform .2s}
+.chip:hover{background:var(--brand2);color:#fff;transform:translateY(-3px)}
+
+.card,.project,.cert>div,.edu>div{background:var(--surface);border:1px solid var(--line);border-radius:18px;transition:box-shadow .25s,border-color .25s}
+.project{padding:26px;margin-bottom:18px;display:grid;gap:10px}
+.project:last-child{margin-bottom:0}
+.project:hover,.cert>div:hover{border-color:var(--brand2);box-shadow:0 14px 34px -16px var(--brand2)}
+.project h3{font-weight:700;font-size:24px;line-height:1.2;margin:0;letter-spacing:-.02em;transition:color .2s,transform .25s}
+.project:hover h3{color:var(--brand2);transform:translateX(6px)}
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.project ul{margin:6px 0 8px;padding-left:20px;max-width:68ch;color:var(--muted)}
+.project li{margin-bottom:4px}
+.links{display:flex;gap:20px;font-weight:700}
+.edu{display:grid;gap:16px}
+.edu>div,.cert>div{padding:18px 22px}
+.edu h3,.cert h3{font-weight:700;font-size:19px;line-height:1.3;margin:0}
+.edu p,.cert p{margin:4px 0 0;color:var(--muted)}
+.when{color:var(--soft);font-size:14px;font-weight:600}
+.cert{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cert a{font-weight:700}
+@media (max-width:760px){.cert{grid-template-columns:1fr}}
+
+.resume{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:36px;align-items:center}
+.resume img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 20px 44px -20px #000;display:block;background:#fff;transition:transform .3s}
+.resume a.thumb:hover img{transform:rotate(-1.2deg) scale(1.02)}
+.resume p{color:var(--muted);max-width:44ch;margin:0 0 20px}
+@media (max-width:760px){.resume{grid-template-columns:1fr}}
+
+.contact .big{font-weight:800;font-size:clamp(22px,4.4vw,44px);line-height:1.15;letter-spacing:-.03em;word-break:break-word}
+.contact ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px;color:var(--muted)}
+footer{padding:28px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.art::before,.art svg,.fl,.caret{animation:none}.hero h1 .ch{animation:none;opacity:1;transform:none}.reveal{opacity:1;transform:none;transition:none}.btn:hover,.chip:hover,.tech span:hover,.social a:hover,.project:hover h3{transform:none}}
+button.hire{border:0;font-family:var(--display);cursor:pointer;transition:transform .2s}
+button.hire:hover{transform:translateY(-2px)}
+.connect-wrap{position:relative}
+.menu{display:none;position:absolute;right:0;top:calc(100% + 12px);min-width:240px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 20px 40px -16px #000;z-index:12}
+.menu.open{display:block;animation:drop .2s ease both}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.menu a{display:block;padding:10px 14px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.menu a small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.menu a:hover,.menu a:focus-visible{background:var(--chip)}
+@media (prefers-reduced-motion:reduce){.menu.open{animation:none}button.hire:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol></svg>
+<header class="top"><div class="bar">
+  <a class="logo" href="#home">Astha<i>.Dev</i></a>
+  <nav aria-label="Sections">
+    <a class="l" href="#home">Home</a><a class="l" href="#about">About</a><a class="l" href="#skills">Skills</a><a class="l" href="#projects">Projects</a><a class="l" href="#resume">Resume</a>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+    <div class="connect-wrap"><button class="hire" id="connectBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="connectMenu">Connect</button>
+      <div class="menu" id="connectMenu">
+        <a href="mailto:rawatastha92@gmail.com">Email me<small>rawatastha92@gmail.com</small></a>
+        <a href="https://www.linkedin.com/in/astha-rawat-859261377" target="_blank" rel="noopener">Connect on LinkedIn<small>Send a connection request</small></a>
+        <a href="https://github.com/astharawat25-stack" target="_blank" rel="noopener">Follow on GitHub<small>See my code</small></a>
+        <a href="tel:+916395049014">Call me<small>(+91) 6395049014</small></a>
+      </div></div>
+  </nav>
+</div></header>
+
+<main id="home">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="hello">Hello &#128075;,</p>
+      <h1>I’m <span id="name">Astha</span></h1>
+      <p class="role">I am a <span id="typed">Full-Stack Developer</span><span class="caret" aria-hidden="true"></span></p>
+      <p class="sub">I build full-stack web apps and put GenAI inside them. BCA student in Dehradun, working with React.js, Node.js, Express.js and MongoDB.</p>
+      <div class="cta">
+        <a class="btn primary" href="/_blob/8fa051991e714b56fea7c6d7413371cd" target="_blank" rel="noopener">View resume</a>
+        <a class="btn ghost" href="#projects">See my projects</a>
+      </div>
+      <div class="social">
+        <a href="https://github.com/astharawat25-stack" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#gh"/></svg></a>
+        <a href="https://www.linkedin.com/in/astha-rawat-859261377" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <a href="mailto:rawatastha92@gmail.com" aria-label="Email">@</a>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 440 360" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b45e6"/><stop offset="1" stop-color="#2b1260"/></linearGradient></defs>
+        <rect x="10" y="10" width="420" height="340" rx="24" fill="url(#g)" stroke="#c9a6ff" stroke-opacity=".5" stroke-width="2"/>
+        <circle cx="42" cy="42" r="7" fill="#ff6b8b"/><circle cx="66" cy="42" r="7" fill="#ffc857"/><circle cx="90" cy="42" r="7" fill="#5be3a0"/>
+        <g font-family="JetBrains Mono,ui-monospace,Menlo,monospace" font-size="19">
+          <text x="38" y="104" fill="#e6d4ff">const <tspan fill="#ffc857">astha</tspan> = {</text>
+          <text x="62" y="140" fill="#e6d4ff">role: <tspan fill="#8ff0c0">"Full-Stack"</tspan>,</text>
+          <text x="62" y="176" fill="#e6d4ff">ai: <tspan fill="#8ff0c0">"Gemini"</tspan>,</text>
+          <text x="62" y="212" fill="#e6d4ff">stack: <tspan fill="#8ff0c0">["React","Node"]</tspan>,</text>
+          <text x="62" y="248" fill="#e6d4ff">learning: <tspan fill="#ffc857">true</tspan>,</text>
+          <text x="38" y="284" fill="#e6d4ff">};</text>
+        </g>
+        <rect x="38" y="304" width="150" height="10" rx="5" fill="#fff" fill-opacity=".25"/>
+      </svg>
+      <span class="fl a">React.js</span><span class="fl b">Gemini AI</span><span class="fl c">Node.js</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>Certificates earned</span></div>
+    <div class="stat"><b>3</b><span>Web projects built</span></div>
+    <div class="tech" aria-label="Technologies"><span>JS</span><span>HTML5</span><span>CSS3</span><span>React</span><span>Node</span><span>Express</span><span>MongoDB</span><span>SQL</span><span>Git</span></div>
+  </div>
+
+  <section id="about" class="about cols">
+    <h2>About</h2>
+    <div>
+      <p>I am a passionate Frontend Developer. I enjoy turning designs into responsive, user-friendly web pages with HTML5, CSS3, JavaScript and React.js, and I care about how a page looks and feels on every screen size.</p>
+      <p>I am studying for a Bachelor of Computer Applications at Eternal University. I am looking for an internship or entry-level frontend developer role where I can keep building and learning.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills cols">
+    <h2>Skills</h2>
+    <dl>
+      <dt>Frontend</dt><dd><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">React.js</span><span class="chip">Responsive Web Design</span></dd>
+      <dt>Backend</dt><dd><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">REST APIs</span></dd>
+      <dt>Database</dt><dd><span class="chip">SQL</span><span class="chip">MongoDB</span><span class="chip">Database Management</span></dd>
+      <dt>Tools</dt><dd><span class="chip">Git &amp; GitHub</span><span class="chip">VS Code</span></dd>
+      <dt>Working style</dt><dd><span class="chip">Problem-Solving</span><span class="chip">Teamwork</span></dd>
+    </dl>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <article class="project">
+      <h3>Student Profile &amp; Course Portal</h3>
+      <div class="stack"><span class="chip">HTML</span><span class="chip">CSS</span></div>
+      <ul><li>Developed a student portal to display student profiles and course information.</li><li>Designed a user-friendly interface using HTML and CSS.</li><li>Created structured web pages for student details and course management.</li></ul>
+      <div class="links"><a href="https://github.com/astharawat25-stack/phase2" target="_blank" rel="noopener">GitHub</a><a href="https://astharawat25-stack.github.io/phase2/" target="_blank" rel="noopener">Live demo</a></div>
+    </article>
+    <article class="project">
+      <h3>AI Content Generator</h3>
+      <div class="stack"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+      <ul><li>Developed an AI-powered web application to generate content based on user input.</li><li>Designed a responsive and user-friendly interface.</li><li>Used JavaScript to handle user input and display AI-generated content.</li></ul>
+      <div class="links"><a href="https://github.com/astharawat25-stack/phaes4" target="_blank" rel="noopener">GitHub</a><a href="https://astharawat25-stack.github.io/phaes4/" target="_blank" rel="noopener">Live demo</a></div>
+    </article>
+    <article class="project">
+      <h3>Ask Anything. Discover More.</h3>
+      <div class="stack"><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">Gemini AI</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+      <ul><li>Developed an AI-powered web application using the Gemini API.</li><li>Built backend APIs using Node.js and Express.js.</li><li>Integrated Gemini AI to generate responses based on user queries.</li><li>Connected frontend and backend for real-time interaction.</li></ul>
+      <div class="links"><a href="https://github.com/astharawat25-stack/bankend" target="_blank" rel="noopener">GitHub</a><a href="https://astharawat25-stack.github.io/bankend/" target="_blank" rel="noopener">Live demo</a></div>
+    </article>
+  </section>
+
+  <section id="education" class="cols">
+    <h2>Education</h2>
+    <div class="edu">
+      <div><h3>Bachelor of Computer Applications (BCA)</h3><p>Eternal University, Baru Sahib, Sirmour</p><span class="when">August 2025 to June 2028</span></div>
+      <div><h3>Senior Secondary School (Class XII, PCM)</h3><p>Government Senior Secondary School</p></div>
+    </div>
+  </section>
+
+  <section id="certifications" class="cols">
+    <h2>Certificates</h2>
+    <div class="cert">
+      <div><h3>Generative AI Literacy Certificate</h3><p><a href="https://drive.google.com/file/d/121e2G7IZygecic2U9cWCjSmkWcLKxmaO/view?usp=sharing" target="_blank" rel="noopener">View certificate</a></p></div>
+      <div><h3>CodeChef Certification</h3><p><a href="https://drive.google.com/file/d/1sxuLUd0toi5Na9SRkJPu9i4hB_JRRnjb/view?usp=sharing" target="_blank" rel="noopener">View certificate</a></p></div>
+      <div><h3>Successful Negotiation: Essential Strategies and Skills</h3><p>Coursera, University of Michigan. Grade: 98%. Negotiation, active listening, conflict resolution and persuasion.</p><p><a href="https://drive.google.com/file/d/1pnMyO7090x4H85gksNa_-vXaEL4-5NkB/view?usp=sharing" target="_blank" rel="noopener">View certificate</a></p></div>
+      <div><h3>Tactical Leadership for Startups: Applying Military Principles to Entrepreneurial Leadership</h3><p><a href="https://drive.google.com/file/d/1NSTMrkpA0ayEkYSMCU3HsyOZJzZPlfyC/view?usp=sharing" target="_blank" rel="noopener">View certificate</a></p></div>
+    </div>
+  </section>
+
+  <section id="resume" class="cols">
+    <h2>Resume</h2>
+    <div class="resume">
+      <a class="thumb" href="/_blob/8fa051991e714b56fea7c6d7413371cd" target="_blank" rel="noopener"><img src="/_blob/2f5adeac742de1f15a898849b817fb9a" alt="Preview of Astha’s one-page resume" loading="lazy"></a>
+      <div>
+        <p>A one-page resume with my skills, projects, education and certificates. Open it to read, print or save as a PDF.</p>
+        <a class="btn primary" href="/_blob/8fa051991e714b56fea7c6d7413371cd" target="_blank" rel="noopener">Open resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let’s work together</h2>
+    <div class="big"><a href="mailto:rawatastha92@gmail.com">rawatastha92@gmail.com</a></div>
+    <ul>
+      <li>Phone: <a href="tel:+916395049014">(+91) 6395049014</a></li>
+      <li>Location: Dehradun, India</li>
+      <li><a href="https://www.linkedin.com/in/astha-rawat-859261377" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://github.com/astharawat25-stack" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </section>
+</div>
+</main>
+<footer><div class="wrap">Astha.Dev | Full-Stack and GenAI developer</div></footer>
+<script>
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var typed=document.getElementById('typed'),bar=document.getElementById('progress');
+  var roles=['Full-Stack Developer','GenAI Developer','React.js Builder','Problem Solver'];
+  if(!rm){
+    var n=document.getElementById('name'),txt=n.textContent;
+    n.setAttribute('aria-label',txt);n.textContent='';
+    txt.split('').forEach(function(c,i){var s=document.createElement('span');s.className='ch';s.setAttribute('aria-hidden','true');s.style.setProperty('--i',i+4);s.textContent=c;n.appendChild(s);});
+    var ri=0,ci=0,del=false;
+    (function tick(){
+      var w=roles[ri];ci+=del?-1:1;typed.textContent=w.slice(0,ci);
+      var t=del?45:85;
+      if(!del&&ci===w.length){del=true;t=1400;}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;t=350;}
+      setTimeout(tick,t);
+    })();
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+      document.querySelectorAll('.stats,section h2,.about p,.skills dt,.skills dd,.project,.cert>div,.edu>div,.resume,.contact .big,.contact li').forEach(function(el){
+        var idx=Array.prototype.indexOf.call(el.parentNode.children,el);
+        el.style.transitionDelay=Math.min(idx,6)*70+'ms';el.classList.add('reveal');io.observe(el);
+      });
+    }
+  }
+  var tk=false;
+  function onScroll(){if(tk)return;tk=true;requestAnimationFrame(function(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;bar.style.width=(m>0?d.scrollTop/m*100:0)+'%';tk=false;});}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var cb=document.getElementById('connectBtn'),cm=document.getElementById('connectMenu');
+  function setMenu(o){cm.classList.toggle('open',o);cb.setAttribute('aria-expanded',o?'true':'false');}
+  cb.addEventListener('click',function(e){e.stopPropagation();setMenu(!cm.classList.contains('open'));});
+  document.addEventListener('click',function(e){if(!cm.contains(e.target))setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setMenu(false);cb.focus();}});
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='light'?'dark':'light');
+  });
+})();
+</script>
+</body>
+</html>
